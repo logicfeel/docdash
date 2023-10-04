@@ -359,7 +359,8 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                 }
                 itemsNav += linktoFn(item.longname, displayName.replace(/\b(module|event):/g, ''));
 
-                if (docdash.static && members.find(function (m) { return m.scope === 'static'; } )) {
+                // POINT:
+                // if (docdash.static && members.find(function (m) { return m.scope === 'static'; } )) {
                     itemsNav += "<ul class='members'>";
 
                     members.forEach(function (member) {
@@ -373,7 +374,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                     });
 
                     itemsNav += "</ul>";
-                }
+                // }
 
                 if (methods.length) {
                     itemsNav += "<ul class='methods'>";
@@ -383,7 +384,9 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
                         if (docdash.private === false && method.access === 'private') return;
 
                         var navItem = '';
-                        var navItemLink = linkto(method.longname, method.name);
+                        // var navItemLink = linkto(method.longname, method.name);
+                        // POINT:
+                        var navItemLink = linkto(method.longname, method.name+ '()');
 
                         navItem += "<li data-type='method'";
                         if(docdash.collapse)
