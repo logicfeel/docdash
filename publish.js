@@ -352,7 +352,9 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
             if ( !hasOwnProp.call(item, 'longname') ) {
                 itemsNav += linktoFn('', item.name);
             } else if ( !hasOwnProp.call(itemsSeen, item.longname) ) {
-                if (conf.templates.default.useLongnameInNav) {
+                // POINT:
+                if (conf.templates.default.useLongnameInNav || item.kind === 'namespace') {
+                // if (conf.templates.default.useLongnameInNav) {
                     displayName = item.longname;
                 } else {
                     displayName = item.name;
